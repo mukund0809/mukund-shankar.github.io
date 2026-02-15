@@ -1,0 +1,10 @@
+{
+  "videos": [
+    {
+      "videoId": "example1",
+      "title": "Your First Guitar Video",
+      "publishedAt": "2024-01-15T10:00:00Z"
+    }
+  ],
+  "lastUpdated": "2024-01-15T10:00:00Z"
+}
