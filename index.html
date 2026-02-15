@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukund Shankar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+        }
+        
+        main {
+            margin-top: 70px;
+            min-height: 100vh;
+        }
+        
+        .section {
+            display: none;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2em;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        
+        .hero-icon {
+            font-size: 5em;
+            opacity: 0.7;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s;
+        }
+        
+        .content-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .content-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .content-card p {
+            color: #999;
+            margin-bottom: 15px;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid #64b5f6;
+            text-align: center;
+        }
+        
+        .skill-item strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #64b5f6;
+            color: #000;
+            padding: 14px 35px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .cta-button:hover {
+            background: #81c3f7;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #666;
+            margin-top: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+            
+            .hero-icon {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">Mukund</a>
+            <ul class="nav-links">
+                <li><a onclick="showSection('guitaring')" class="nav-tab active">Guitaring</a></li>
+                <li><a onclick="showSection('math')" class="nav-tab">Math</a></li>
+                <li><a onclick="showSection('volunteering')" class="nav-tab">Volunteering</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- GUITARING SECTION -->
+        <section id="guitaring" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Guitaring</h1>
+                    <p>Exploring music through strings and melodies. From classical technique to modern expression.</p>
+                    <a href="mailto:your-email@example.com" class="cta-button">Get in Touch</a>
+                </div>
+                <div class="hero-icon">🎸</div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Performance & Practice</h2>
+                <p>Dedicated to continuous improvement and musical exploration. Whether performing acoustic sets or crafting electric soundscapes, I bring passion and precision to every note.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2>Musical Interests</h2>
+                <div class="skills">
+                    <div class="skill-item">
+                        <strong>Genre Exploration</strong>
+                        <p>Rock, Jazz, Classical, Fingerstyle</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Technical Skills</strong>
+                        <p>Fingerpicking, Alternate Picking, Music Theory</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Composition</strong>
+                        <p>Original pieces and arrangements</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Performance</strong>
+                        <p>Live shows and recordings</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- MATH SECTION -->
+        <section id="math" class="section">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Mathematics</h1>
+                    <p>Passionate about solving complex problems and understanding the elegant patterns that govern our world.</p>
+                    <a href="mailto:your-email@example.com" class="cta-button">Collaborate</a>
+                </div>
+                <div class="hero-icon">∑</div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Mathematical Pursuits</h2>
+                <p>Interested in applying mathematical concepts to real-world problems. From computational algorithms to theoretical analysis, mathematics provides the language to express complex ideas with precision.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2>Areas of Focus</h2>
+                <div class="skills">
+                    <div class="skill-item">
+                        <strong>Algorithms</strong>
+                        <p>Problem-solving and optimization</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Data Science</strong>
+                        <p>Statistical analysis and modeling</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Computation</strong>
+                        <p>Programming and implementation</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Research</strong>
+                        <p>Exploring mathematical concepts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- VOLUNTEERING SECTION -->
+        <section id="volunteering" class="section">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Volunteering</h1>
+                    <p>Committed to giving back to the community and making a positive impact through service.</p>
+                    <a href="mailto:your-email@example.com" class="cta-button">Join Us</a>
+                </div>
+                <div class="hero-icon">❤️</div>
+            </div>
+            
+            <div class="content-card">
+                <h2>Community Service</h2>
+                <p>Active participant in community development and social impact initiatives. Believing that technology and knowledge should be shared to improve lives and foster learning in underserved communities.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2>Involvement & Impact</h2>
+                <div class="skills">
+                    <div class="skill-item">
+                        <strong>Education</strong>
+                        <p>Teaching and mentoring</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Tech for Good</strong>
+                        <p>Using technology to solve problems</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Community Outreach</strong>
+                        <p>Building connections and awareness</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Leadership</strong>
+                        <p>Organizing and coordinating efforts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Mukund Shankar. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Remove active class from all nav tabs
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav item
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
